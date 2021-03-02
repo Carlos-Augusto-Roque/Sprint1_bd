@@ -1,0 +1,60 @@
+CREATE DATABASE Ecommerce;
+
+USE Ecommerce;
+
+--criado as tabelas do bd
+
+CREATE TABLE Lojas
+(
+	IdLoja	INT PRIMARY KEY IDENTITY
+	,Nome	VARCHAR(50)NOT NULL
+);
+
+CREATE TABLE Categorias
+(
+	IdCategoria	INT PRIMARY KEY IDENTITY
+	,Nome	VARCHAR(50)NOT NULL
+	,IdLoja	INT FOREIGN KEY REFERENCES Lojas(IdLoja)NOT NULL
+);
+
+CREATE TABLE SubCategorias
+(
+	IdSubCategoria	INT PRIMARY KEY IDENTITY
+	,Nome	VARCHAR(50)NOT NULL
+	,IdCategoria	INT FOREIGN KEY REFERENCES Categorias(IdCategoria)NOT NULL
+);
+
+CREATE TABLE Produtos
+(
+	IdProduto	INT PRIMARY KEY IDENTITY
+	,Titulo	VARCHAR(50)NOT NULL
+	,Valor SMALLMONEY NOT NULL
+	,IdSubCategoria	INT FOREIGN KEY REFERENCES SubCategorias(IdSubCategoria)NOT NULL
+);
+
+CREATE TABLE Clientes
+(
+	IdCliente	INT PRIMARY KEY IDENTITY
+	,Nome	VARCHAR(50)NOT NULL
+);
+
+CREATE TABLE Pedidos
+(
+	IdPedido	INT PRIMARY KEY IDENTITY
+	,NumPedido	INT 
+	,IdCliente	INT FOREIGN KEY REFERENCES Clientes(IdCliente)
+	,DataPedido	DATE
+	,[Status] BIT
+);
+
+CREATE TABLE PedidosProdutos
+(
+	IdPedido	INT FOREIGN KEY REFERENCES Pedidos(IdPedido)
+	,IdProduto	INT FOREIGN KEY REFERENCES Produtos(IdProduto)
+);
+
+ALTER TABLE Pedidos
+DROP COLUMN [Status];
+
+ALTER TABLE Pedidos
+ADD [Status] VARCHAR(50);
