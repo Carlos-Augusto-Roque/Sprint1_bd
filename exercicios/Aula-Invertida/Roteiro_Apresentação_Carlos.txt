@@ -1,0 +1,45 @@
+
+
+			     Roteiro Carlos 
+
+			- Demonstração prática
+
+  Pessoal, vou demonstrar como se cria uma função de forma bem sucinta
+
+- Como vimos na apresentação dos slides, o primeiro passo é criar um banco de dados
+
+- Criamos primeiramente a tabela "Alunos"
+
+- Inserimos os dados nesta tabela
+
+- Verificamos através de script se o cadastro dos dados estão ok
+
+- Voltamos e criamos a função do tipo escalar, conforme os colegas já explicaram
+
+- Então fizemos outro script para realizar a consulta utilizando a função criada "Media"
+  (E através do parâmetro "nome" do aluno cadastrado consultar sua média), ou seja retornará um valor apenas.
+
+---------------------------------------------------
+
+- Agora então , aproveitando o banco de dados já existente, criamos uma função do tipo embutida(inline) de nome "MostrarNota"
+  para consultar os alunos que tenham a nota5 maior do que um parâmetro(valor da nota) indicado no script
+
+- O resultado da pesquisa é uma tabela com o nome e a nota5 caso essa seja maior do que o parâmetro informado
+
+---------------------------------------------------
+
+- E por último, criamos uma função do tipo multi-instruções
+
+- Para isso, incrementamos nosso banco de dados, criando mais uma tabela (DadosAlunos)
+
+- Inserimos os dados nesta tabela
+
+- Verificamos através de script se o cadastro dos dados estão ok
+
+- Agora sim, criamos a função "MultiTabelas" para consultar dados de de duas tabelas ("Alunos" e "DadosAlunos")
+  (Consultaremos todos os alunos cadastrados ,mostrando os nomes,a nota1, o curso e o periodo que estuda
+
+- O resultado da pesquisa é uma tabela com dados de duas tabelas
+
+
+
