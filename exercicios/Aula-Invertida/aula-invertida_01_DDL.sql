@@ -25,6 +25,7 @@ CREATE TABLE DadosAlunos
 	,Periodo VARCHAR(100)
 );
 
+--função escalar
 --criado função "Media"
 CREATE FUNCTION Media (@Nome VARCHAR(50))
 RETURNS	REAL
@@ -33,29 +34,37 @@ AS
 		DECLARE @Media REAL
 		SELECT @Media = (Nota1 + Nota2 + Nota3 + Nota4 + Nota5)/5
 		FROM Alunos
-		WHERE        Alunos.Nome  =    @Nome
-       	RETURN      @Media
+		WHERE Alunos.Nome  = @Nome
+       	RETURN @Media
     END
 
+--função Embutida
 --criado função "MostrarNota"
-CREATE FUNCTION  MostrarNota(@Valor REAL)
+CREATE FUNCTION MostrarNota (@Valor REAL)
 RETURNS TABLE
 AS
 	RETURN(
-		SELECT Alunos.Nome,Alunos.Nota5 
+		SELECT Alunos.Nome,     Alunos.Nota5 
 		FROM Alunos
 		WHERE Alunos.Nota5 > @Valor);
 
---criar função "Multitabelas"
+--função multi-instruções
+--criar função "Multitabelas" - sem parâmetros nesse exemplo (é possível)
 CREATE FUNCTION  MultiTabelas()
+        --variável de tabelas 
 RETURNS @Valores TABLE
+		--essa variável vai receber os dados que se deseja provenientes de outras tabelas ("Alunos" e "DadosAlunos")
 		(Nome VARCHAR(100),Nota1 TINYINT,Curso VARCHAR(100),Periodo VARCHAR(100))
 AS
 	BEGIN
+		--inserir dentro da variável os dados abaixo
 		INSERT @Valores(Nome,Nota1,Curso,Periodo)
+			--os dados vem de onde? --> das tabelas "Alunos" e "DadosAlunos"
 			SELECT Alunos.Nome,Alunos.Nota1,DadosAlunos.Curso,DadosAlunos.Periodo
 			FROM Alunos
+			--fazendo uma junção da tabela Alunos com a tabela DadosAlunos
 			INNER JOIN DadosAlunos
+			--onde o Id do Aluno da tabela aluno seja igual ao Id do aluno na tabela DadosAlunos
 			ON Alunos.IdAluno = DadosAlunos.IdAluno;
 		RETURN
 	END
