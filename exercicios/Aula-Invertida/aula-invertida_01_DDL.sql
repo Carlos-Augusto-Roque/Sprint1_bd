@@ -69,4 +69,26 @@ AS
 		RETURN
 	END
 
+
+--exemplo de uso de uma função dentro de outra
+CREATE FUNCTION  MultiTabelas1()
+        --variável de tabelas 
+RETURNS @Valores TABLE
+		--essa variável vai receber os dados que se deseja provenientes de outras tabelas ("Alunos" e "DadosAlunos") e da função "Media"
+		(Nome VARCHAR(100),Nota1 TINYINT,Curso VARCHAR(100),Periodo VARCHAR(100),Media TINYINT)
+AS
+	BEGIN
+		--inserir dentro da variável os dados abaixo
+		INSERT @Valores(Nome,Nota1,Curso,Periodo,Media)
+			--os dados vem de onde? --> das tabelas "Alunos" e "DadosAlunos" e da função "Media"
+			SELECT Alunos.Nome,Alunos.Nota1,DadosAlunos.Curso,DadosAlunos.Periodo,dbo.Media(Alunos.Nome)
+			FROM Alunos
+			--fazendo uma junção da tabela Alunos com a tabela DadosAlunos
+			INNER JOIN DadosAlunos
+			--onde o Id do Aluno da tabela aluno seja igual ao Id do aluno na tabela DadosAlunos
+			ON Alunos.IdAluno = DadosAlunos.IdAluno ;
+		RETURN
+	END
+	
+	DROP FUNCTION MultiTabelas1;
 	

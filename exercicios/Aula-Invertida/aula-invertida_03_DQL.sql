@@ -18,3 +18,6 @@ FROM MostrarNota(3);
 --Consultar nome,1º nota, curso e periodo que o aluno estuda
 --function tipo multi-instruções (Multi-statement)
 SELECT * FROM MultiTabelas();
+
+--exemplo de função dentro de função
+SELECT * FROM MultiTabelas1();
