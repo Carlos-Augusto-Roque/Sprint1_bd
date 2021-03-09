@@ -14,37 +14,15 @@ INSERT INTO SubCategorias (Nome,IdCategoria)
 VALUES ('Celular',1),('Geladeira',2);
 
 INSERT INTO Produtos(Titulo,Valor,IdSubCategoria)
-VALUES ('Iphone 12 Pro Max',8000,1),('Philips 600L',3500,2);
+VALUES ('Iphone 12 Pro Max',8000,1),('Philips 600L',3500,2),('Moto G9 Plus',1000,1),('Brastemp 200L',1500,2);
 
 INSERT INTO Pedidos(NumPedido,IdCliente,DataPedido,[Status])
-VALUES (001,1,'2015-05-30',1),(002,2,'2017-03-25',0);
+VALUES (1,2,'2019-05-30','Entregue'),(2,2,'2020-03-25','A retirar'),(3,2,'2018-05-10','Entregue'),(4,1,'2014-03-25','A retirar'),(5,1,'2012-03-21','Entregue');
 
 INSERT INTO PedidosProdutos(IdPedido,IdProduto)
-VALUES (1,1),(2,2);
+VALUES (1,1003),(2,1004),(3,1005),(4,1003),(5,1005);
 
-UPDATE Pedidos
-SET Status =  'Entregue' WHERE IdPedido = 1;
 
-UPDATE Pedidos
-SET Status =  'Em andamento' WHERE IdPedido = 2;
 
-DELETE FROM Pedidos WHERE IdPedido = 4;
 
-DELETE FROM Clientes WHERE IdCliente = 3;
-DELETE FROM Clientes WHERE IdCliente = 4;
-
-DELETE FROM Lojas WHERE IdLoja = 3;
-DELETE FROM Lojas WHERE IdLoja = 4;
-
-DELETE FROM Categorias WHERE IdCategoria = 3;
-DELETE FROM Categorias WHERE IdCategoria = 4;
-
-DELETE FROM SubCategorias WHERE IdSubCategoria = 3;
-DELETE FROM SubCategorias WHERE IdSubCategoria = 4;
-
-DELETE FROM Produtos WHERE IdProduto = 3;
-DELETE FROM Produtos WHERE IdProduto = 4;
-
-DELETE FROM PedidosProdutos WHERE IdPedido = 1;
-DELETE FROM PedidosProdutos WHERE IdPedido = 2;
 

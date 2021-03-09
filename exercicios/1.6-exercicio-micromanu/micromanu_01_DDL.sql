@@ -45,4 +45,32 @@ CREATE TABLE PedidosColaboradores
 );
 
 
+/*listar todos os pedidos de um determinado cliente,
+mostrando quais foram os colaboradores que executaram o serviço,
+qual foi o tipo de conserto, qual item foi consertado e o nome deste cliente*/
+CREATE FUNCTION PesquisaPedidos (@Nome VARCHAR (50))
+RETURNS @valores TABLE (IdPedido INT,Colaborador VARCHAR(50),Descricao VARCHAR(50),Item VARCHAR(50),Cliente VARCHAR(50))
+AS
+	BEGIN
+		INSERT @valores(IdPedido,Colaborador,Descricao,Item,Cliente)
+		SELECT Pedidos.IdPedido AS NºPedido,Colaboradores.Nome,TiposConsertos.Descricao AS TipoConserto,Itens.Nome,Clientes.Nome FROM Pedidos
+		INNER JOIN PedidosColaboradores
+		ON Pedidos.IdPedido = PedidosColaboradores.IdPedido
+		INNER JOIN Colaboradores
+		ON Colaboradores.IdColaborador = PedidosColaboradores.IdColaborador
+		INNER JOIN TiposConsertos
+		ON Pedidos.IdTipoConserto = TiposConsertos.IdTipoConserto
+		INNER JOIN Itens
+		ON Pedidos.IdItem = Itens.IdItem
+		INNER JOIN Clientes
+		ON Pedidos.IdCliente = Clientes.IdCliente
+		WHERE Clientes.Nome = @Nome;
+	RETURN
+END
+
+
+
+	
+
+
 

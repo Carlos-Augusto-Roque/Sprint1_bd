@@ -16,3 +16,8 @@ SELECT * FROM Pedidos;
 
 SELECT * FROM PedidosProdutos;
 
+/* listar todos os pedidos de um cliente (nome), mostrando quais produtos foram solicitados
+(titulo) neste pedido e de qual subcategoria (nome) e categoria (nome) pertencem*/
+--chamando a função criada
+SELECT * FROM PesquisaPedido('Gabriel');
+
