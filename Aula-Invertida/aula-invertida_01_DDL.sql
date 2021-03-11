@@ -90,5 +90,5 @@ AS
 		RETURN
 	END
 	
-	DROP FUNCTION MultiTabelas1;
+	
 	
