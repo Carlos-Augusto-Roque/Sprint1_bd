@@ -1,5 +1,7 @@
 USE SP_Medical_Group;
 
+--inserindo os dados
+
 INSERT INTO TiposUsuarios(TituloTipoUsuario)
 VALUES ('Administrador')
 	  ,('Paciente')
@@ -66,4 +68,6 @@ VALUES (12,3,3,'20/01/2020','15:00','')
 	  ,(9,1,2,'07/02/2019','11:00','')
 	  ,(12,3,1,'08/03/2020','15:00','')
 	  ,(9,1,1,'09/03/2020','11:00','');
+
+
 

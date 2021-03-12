@@ -1,13 +1,15 @@
 USE SP_Medical_Group;
 
+--fazendo as consultas
+
 -- mostrar quantidade de usuários
 SELECT COUNT(IdUsuario)AS QuantidadeDeUsuarios FROM Usuarios ;
 
---converter a data de nascimento do usuário para formato mm-dd-aa na exibição
+--consulta a data de nascimento do usuário para formato padrão de exibição
 SELECT NomePaciente AS Paciente, DataNascimento FROM Pacientes;
+--converter a data de nascimento do usuário para formato mm-dd-aa na exibição
 SELECT NomePaciente AS Paciente, CONVERT(VARCHAR(10),DataNascimento,3) AS DataNascimento FROM Pacientes ;
 
---criar função para retornar a quantidade de médicos de uma determinada especialidade
 --consultando todos os medicos
 SELECT * FROM Medicos;
 
@@ -26,7 +28,7 @@ ON Medicos.IdEspecialidade = Especialidades.IdEspecialidade AND DescricaoEspecia
 --consultando a quantidade de médicos de uma determinada especialidade chamando a funcao criada
 SELECT dbo.Q_Med_Esp('Pediatria') AS Quantidade_Medicos;
 
---criar função para retornar a idade do usuário a partir de uma determinada procedure
+--consultando a idade do usuário em anos a partir da procedure criada
 EXECUTE Idade 'Mariana';
 
 --consultando pacientes e suas consultas registradas (todos os status)

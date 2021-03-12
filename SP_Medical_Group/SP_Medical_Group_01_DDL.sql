@@ -1,5 +1,7 @@
 CREATE DATABASE SP_Medical_Group;
 
+--criando as tabelas,funções e procedimentos
+
 USE SP_Medical_Group;
 
 CREATE TABLE TiposUsuarios
@@ -73,7 +75,7 @@ CREATE TABLE Consultas
 	,DescricaoAtendimento VARCHAR(255) NOT NULL
 );
 
---function
+--criar função para retornar a quantidade de médicos de uma determinada especialidade
 CREATE FUNCTION Q_Med_Esp (@especialidade VARCHAR(50))
 RETURNS INT 
 AS
@@ -86,7 +88,7 @@ AS
 	RETURN @Q_Med_Esp
 END
 
---procedure
+--criar função para retornar a idade do usuário a partir de uma determinada procedure
 CREATE PROCEDURE Idade(@nome VARCHAR (100))
 AS
 	DECLARE @Idade INT
