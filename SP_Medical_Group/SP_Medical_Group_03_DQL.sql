@@ -30,9 +30,12 @@ SELECT dbo.Q_Med_Esp('Pediatria') AS Quantidade_Medicos;
 EXECUTE Idade 'Mariana';
 
 --consultando pacientes e suas consultas registradas (todos os status)
-SELECT Pacientes.NomePaciente,Consultas.DataConsulta,Consultas.HorarioConsulta,StatusConsultas.DescricaoStatusConsulta AS [Status] FROM Consultas
+SELECT Pacientes.NomePaciente,Medicos.NomeMedico,Consultas.DataConsulta,Consultas.HorarioConsulta,StatusConsultas.DescricaoStatusConsulta AS [Status],Consultas.DescricaoAtendimento
+FROM Consultas
 INNER JOIN Pacientes
 ON Pacientes.IdPaciente = Consultas.IdPaciente
 INNER JOIN StatusConsultas
 ON Consultas.IdStatusConsulta = StatusConsultas.IdStatusConsulta
-WHERE Pacientes.NomePaciente = 'Henrique';
+INNER JOIN Medicos
+ON Medicos.IdMedico = Consultas.IdMedico
+WHERE Pacientes.NomePaciente = 'Mariana';
