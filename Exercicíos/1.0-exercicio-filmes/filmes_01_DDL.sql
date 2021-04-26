@@ -18,3 +18,11 @@ CREATE TABLE Filmes
 	,IdGenero	INT FOREIGN KEY REFERENCES Generos (IdGenero) --referência a chave estrangeira
 	,Titulo		VARCHAR(150) NOT NULL
 );
+
+CREATE TABLE Usuarios
+(
+	IdUsuario INT PRIMARY KEY IDENTITY
+	,Email VARCHAR(250) NOT NULL UNIQUE
+	,Senha VARCHAR(250) NOT NULL
+	,Permissao VARCHAR(250) NOT NULL
+);

@@ -11,7 +11,7 @@ SELECT COUNT(IdUsuario)AS QuantidadeDeUsuarios FROM Usuarios ;
 --consulta a data de nascimento do usuário para formato padrão de exibição
 SELECT NomePaciente AS Paciente, DataNascimento FROM Pacientes;
 
---converter a data de nascimento do usuário para formato mm-dd-aa na exibição
+--converter a data de nascimento do usuário para formato dd-mm-aa na exibição
 SELECT NomePaciente AS Paciente, CONVERT(VARCHAR(10),DataNascimento,3) AS DataNascimento FROM Pacientes ;
 
 --consultando todos os medicos
